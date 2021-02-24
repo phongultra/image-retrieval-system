@@ -5,10 +5,27 @@
         <div class="container">
             <h1 class="text-center">Đánh giá hệ thống tìm kiếm hình ảnh</h1>
             
-            <form class="text-center" method="POST" enctype="multipart/form-data">
-                <button class="btn btn-primary mt-1" type="submit">Đánh giá (Label: Good)</button>
-                <button class="btn btn-success mt-1" type="submit">Đánh giá (Label: OK)</button>
-                <button class="btn btn-danger mt-1" type="submit">Đánh giá (Label: Junk)</button>
+            <form method="POST" enctype="multipart/form-data">
+                <p>Chọn các nhãn dữ liệu để đánh giá: </p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="rdlabel" id="rdlabel1" value="good" checked>
+                    <label class="form-check-label" for="rdlabel1">
+                        Label: Good
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="rdlabel" id="rdlabel2" value="ok">
+                    <label class="form-check-label" for="rdlabel2">
+                        Label: OK
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="rdlabel" id="rdlabel3" value="junk">
+                    <label class="form-check-label" for="rdlabel3">
+                        Label: Junk
+                    </label>
+                </div>
+                <button class="btn btn-primary mt-1" type="submit">Đánh giá hệ thống</button>
             </form>
 
             {% if imgsrc %}

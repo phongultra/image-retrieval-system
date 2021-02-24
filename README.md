@@ -1,4 +1,4 @@
-# Simple Image Search Engine
+# Simple Image Search Engine And Valuate System
 
 
 ## [Demo](http://www.simple-image-search.xyz/)
@@ -49,7 +49,7 @@ python server.py
 - (Advanced) If you'd like to deploy the system in a secure way, please consider running the search engine with the usual web server, e.g., uWSGI + nginx.
 
 
-## Citation
+## Tham khao
 
     @misc{sis,
 	    author = {Yusuke Matsui},

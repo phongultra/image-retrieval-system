@@ -54,7 +54,7 @@ def index():
 @app.route('/evaluation', methods=['GET', 'POST'])
 def evaluation():
     if request.method == 'POST':
-
+        label = request.form['rdlabel']
         ap = []
         queries = []
         map = 0.0
@@ -75,11 +75,11 @@ def evaluation():
             dists = np.linalg.norm(features-query, axis=1)
             ids = np.argsort(dists)[:30]  # Top 30 results
             results = [img_names[id] for id in ids]
-            goods = file_lines_to_list(
-                str(query_file_path).replace("_query", "_good"))
+            dataLabel = file_lines_to_list(
+                str(query_file_path).replace("query", label))
 
             # ap = average_precision_score(results, goods)
-            ap.append(caculate_AP(results, goods))
+            ap.append(caculate_AP(results, dataLabel))
             queries.append(str(query_image_name))
 
         map = round(cal_average(ap), 4)
@@ -121,7 +121,7 @@ def evaluation():
             fig.set_figheight(figure_height)
 
         # set plot title
-        plt.title("MAP = {0:.2f}%".format(map*100), fontsize=14)
+        plt.title("MAP = {0:.2f}%".format(map*100) +" - "+ label + " label", fontsize=14)
         # set axis titles
         # plt.xlabel('classes')
         plt.xlabel("Average Precision", fontsize='large')
@@ -149,22 +149,22 @@ def file_lines_to_list(path):
     return content
 
 # caculate AP
-def caculate_AP(result, good):
+def caculate_AP(result, dataLabel):
     p = 0.0  # precision
     countRel = 0  # count relevant
     ap = 0.0  # average precision
-    for i, n in enumerate(good):
-        if good[i]:
+    for i, n in enumerate(dataLabel):
+        if dataLabel[i]:
             try:
                 #Relevant
-                result.index(good[i])
+                result.index(dataLabel[i])
                 countRel += 1
             except ValueError:
                 #Irrelevant
                 a = 1
             p += countRel/(i+1)
 
-    ap = p/len(good)
+    ap = p/len(dataLabel)
     print("===> AP: " + str(ap))
     return ap
 
