@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></head>
+    <body>
+        <div class="container">
+            <h1 class="text-center">Đánh giá hệ thống tìm kiếm hình ảnh</h1>
+            
+            <form class="text-center" method="POST" enctype="multipart/form-data">
+                <button class="btn btn-primary mt-1" type="submit">Đánh giá (Label: Good)</button>
+                <button class="btn btn-success mt-1" type="submit">Đánh giá (Label: OK)</button>
+                <button class="btn btn-danger mt-1" type="submit">Đánh giá (Label: Junk)</button>
+            </form>
+
+            {% if imgsrc %}
+            <img src="{{ imgsrc }}">
+            {% endif %}
+            
+        </div>
+    </body>
+</html>
+
+

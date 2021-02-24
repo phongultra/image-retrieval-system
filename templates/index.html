@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></head>
+    <body>
+        <div class="container">
+            <h1 class="text-center">Hệ thống tìm kiếm hình ảnh</h1>
+            
+            <form method="POST" enctype="multipart/form-data">
+                <input type="file" name="query_img"><br>
+                <button class="btn btn-primary mt-1" type="submit">Xác nhận</button>
+            </form>
+
+            <h2>Query:</h2>
+            {% if query_path %}
+            <img src="{{ query_path }}" width="250px">
+            {% endif %}
+            <h2>Kết quả:</h2>
+            {% for score in scores %}
+            <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
+                <img src="{{ score[1] }}" height="175px">
+                <figcaption>{{ score[2] }}<br>{{ score[0] }}</figcaption>
+            </figure>
+            {% endfor %}
+        </div>
+    </body>
+</html>
+
+
