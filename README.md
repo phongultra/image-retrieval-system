@@ -19,6 +19,7 @@ cd image-retrieval-system
 pip install -r requirements.txt
 
 # Đưa kho ảnh dữ liệu vào (*.jpg) on static/img
+download kho ảnh Oxford buildings 5K tại đây: http://www.robots.ox.ac.uk/~vgg/data/oxbuildings/
 
 # Sau đó fc6 features sẽ được trích xuất và lưu vào static/feature
 # Sẽ mất thời gian khá lâu trong lần đầu tiên, vì Keras phải tính trọng số VGG
@@ -27,13 +28,13 @@ python offline.py
 # Chạy file và đăng nhập vào localhost:5000
 python server.py
 ```
-# localhost:5000
+## localhost:5000
 Đây là trang chủ
 Thực hiện chức năng tìm kiếm hình ảnh, gồm có:
 - module nhập hình ảnh query
 - module trả kết quả tương ứng với hình ảnh query
 
-# localhost:5000/evaluation
+## localhost:5000/evaluation
 Đây là trang đánh giá hệ thống
 Thực hiện chức năng tìm kiếm hình ảnh dựa trên bộ groundtruth, gồm có:
 - Đánh giá trên label good
