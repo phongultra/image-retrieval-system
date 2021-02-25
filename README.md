@@ -29,7 +29,7 @@ python server.py
 ```
 # localhost:5000
 Đây là trang chủ
-Thực hiện chức năng tìm kiếm hình ảnh,gồm có:
+Thực hiện chức năng tìm kiếm hình ảnh, gồm có:
 - module nhập hình ảnh query
 - module trả kết quả tương ứng với hình ảnh query
 
