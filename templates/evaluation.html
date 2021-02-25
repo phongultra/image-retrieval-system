@@ -1,39 +1,54 @@
 <!doctype html>
 <html>
-    <head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></head>
-    <body>
-        <div class="container">
-            <h1 class="text-center">Đánh giá hệ thống tìm kiếm hình ảnh</h1>
-            
-            <form method="POST" enctype="multipart/form-data">
-                <p>Chọn các nhãn dữ liệu để đánh giá: </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="rdlabel" id="rdlabel1" value="good" checked>
-                    <label class="form-check-label" for="rdlabel1">
-                        Label: Good
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="rdlabel" id="rdlabel2" value="ok">
-                    <label class="form-check-label" for="rdlabel2">
-                        Label: OK
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="rdlabel" id="rdlabel3" value="junk">
-                    <label class="form-check-label" for="rdlabel3">
-                        Label: Junk
-                    </label>
-                </div>
-                <button class="btn btn-primary mt-1" type="submit">Đánh giá hệ thống</button>
-            </form>
 
-            {% if imgsrc %}
-            <img src="{{ imgsrc }}">
-            {% endif %}
-            
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Hệ thống tìm kiếm hình ảnh</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mt-4">Đánh giá hệ thống tìm kiếm hình ảnh</h1>
+
+                <form class="border p-3" style="margin: 25px auto 0; max-width: 350px;" method="POST" enctype="multipart/form-data">
+                    <p><strong>Chọn các nhãn dữ liệu để đánh giá: </strong></p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rdlabel" id="rdlabel1" value="good" checked>
+                        <label class="form-check-label" for="rdlabel1">
+                            Label: Good
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rdlabel" id="rdlabel2" value="ok">
+                        <label class="form-check-label" for="rdlabel2">
+                            Label: OK
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rdlabel" id="rdlabel3" value="junk">
+                        <label class="form-check-label" for="rdlabel3">
+                            Label: Junk
+                        </label>
+                    </div>
+                    <button class="btn btn-success mt-4" type="submit">Đánh giá hệ thống</button>
+                </form>
+            </div>
+            <div class="col-12">
+                {% if imgsrc %}
+                <p class="mt-4 text-center"><strong>Kết quả đánh giá hệ thống </strong></p>
+                {% endif %}
+
+                <figure class="text-center">
+                    {% if imgsrc %}
+                    <img class="img-fluid" src="{{ imgsrc }}">
+                    {% endif %}
+                </figure>
+            </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
-
-

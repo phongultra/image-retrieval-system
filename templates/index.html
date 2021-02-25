@@ -1,28 +1,64 @@
 <!doctype html>
 <html>
-    <head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></head>
-    <body>
-        <div class="container">
-            <h1 class="text-center">Hệ thống tìm kiếm hình ảnh</h1>
-            
-            <form method="POST" enctype="multipart/form-data">
-                <input type="file" name="query_img"><br>
-                <button class="btn btn-primary mt-1" type="submit">Xác nhận</button>
-            </form>
 
-            <h2>Query:</h2>
-            {% if query_path %}
-            <img src="{{ query_path }}" width="250px">
-            {% endif %}
-            <h2>Kết quả:</h2>
-            {% for score in scores %}
-            <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
-                <img src="{{ score[1] }}" height="175px">
-                <figcaption>{{ score[2] }}<br>{{ score[0] }}</figcaption>
-            </figure>
-            {% endfor %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Hệ thống tìm kiếm hình ảnh</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mt-4">Hệ thống tìm kiếm hình ảnh</h1>
+
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="file-upload">
+                        <input class="d-hidden" id="query_img" type="file" name="query_img">
+                        <label for="query_img" class="btn btn-outline-primary m-2" type="button">Tải ảnh lên</label>
+                        <button class="btn btn-success m-2" type="submit">Tìm kiếm</button>
+                    </div>
+                </form>
+
+                {% if query_path %}
+                <h3 class="mt-4">Ảnh query:</h4>
+                <img src="{{ query_path }}" width="180px">
+                {% endif %}
+
+                {% if query_path %}
+                <h3 class="mt-4">Kết quả tìm kiếm:</h3>
+                {% endif %}
+                <div class="results">
+                    {% for score in scores %}
+                    <figure>
+                        <img src="{{ score[1] }}">
+                        <figcaption>Distance: {{ score[0] }}</figcaption>
+                    </figure>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-    </body>
+    </div>
+
+    <footer>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-5">
+                    <h5>Môn học: </h5>
+                    <p>Tìm kiếm thông tin thị giác - CS2224 - 2021</p>
+                    <h5>Giảng viên hướng dẫn: </h5>
+                    <p>TS.Ngô Đức Thành - thanhnd@uit.edu.vn</p>
+                </div>
+                <div class="col-lg-7">
+                    <h5>Nhóm thực hiện: </h5>
+                    <p>CH1902005 - Nguyễn Tường Duy - duynt.14@grad.uit.edu.vn<br>CH1902014 - Nguyễn Thành Phong -
+                        phongnt.14@grad.uit.edu.vn<br>CH1902024 - Nguyễn Thanh Tú - tunt.14@grad.uit.edu.vn</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
 </html>
-
-
